@@ -13,7 +13,8 @@ module Jekyll
         file.content += "## Posts:\n\n"
 
         site.posts.docs.each do |post|
-          file.content += "- [#{post.data["title"]}](#{post.url}index.md)\n"
+          post_url = site.baseurl ? File.join(site.baseurl, post.url) : post.url
+          file.content += "- [#{post.data["title"]}](#{post_url}index.md)\n"
         end
 
         file.data["layout"] = nil
